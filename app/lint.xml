@@ -2,8 +2,6 @@
 <lint>
 
     <issue id="InvalidPackage" severity="warning" />
-    <issue id="UnusedResources" severity="fatal" />
-    <issue id="ResourceType" severity="warning" />
 
     <issue id="UnusedResources" severity="ignore" />
     // Unused will be removed on release
@@ -19,4 +17,8 @@
     <issue id="NewerVersionAvailable" severity="ignore" />
     <issue id="PropertyEscape" severity="ignore" />
     // CI issue with sdk.dir in local.properties
+
+    // To be fixed in butterknife 9.0.0; until then, ignore check
+    // https://github.com/JakeWharton/butterknife/issues/1074
+    <issue id="ObsoleteLintCustomCheck" severity="ignore" />
 </lint>

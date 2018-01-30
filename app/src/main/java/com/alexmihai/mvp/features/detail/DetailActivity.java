@@ -19,6 +19,8 @@ import com.alexmihai.mvp.features.detail.widget.StatisticView;
 import com.alexmihai.mvp.injection.component.ActivityComponent;
 import com.bumptech.glide.Glide;
 
+import java.util.Locale;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -69,7 +71,7 @@ public class DetailActivity extends BaseActivity implements DetailMvpView, Error
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
-        setTitle(pokemonName.substring(0, 1).toUpperCase() + pokemonName.substring(1));
+        setTitle(pokemonName.substring(0, 1).toUpperCase(Locale.getDefault()) + pokemonName.substring(1));
 
         errorView.setErrorListener(this);
 

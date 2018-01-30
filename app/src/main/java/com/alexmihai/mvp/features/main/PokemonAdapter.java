@@ -10,6 +10,7 @@ import com.alexmihai.mvp.R;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -75,7 +76,7 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
             this.pokemon = pokemon;
             nameText.setText(
                     String.format(
-                            "%s%s", pokemon.substring(0, 1).toUpperCase(), pokemon.substring(1)));
+                            "%s%s", pokemon.substring(0, 1).toUpperCase(Locale.getDefault()), pokemon.substring(1)));
         }
     }
 }
