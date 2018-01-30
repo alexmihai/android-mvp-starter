@@ -38,6 +38,12 @@ The following code analysis tools are set up on this project:
 ./gradlew checkstyle
 ```
 
+* [Copy Paste Detector (cpd)](https://github.com/aaschmid/gradle-cpd-plugin)
+
+```sh
+./gradlew cpdCheck
+```
+
 ## The check task
 
 To ensure that your code is valid and stable use check:

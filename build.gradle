@@ -14,6 +14,9 @@ buildscript {
 
         // Google Play publisher
         classpath 'com.github.triplet.gradle:play-publisher:1.2.0'
+
+        // Copy Detector (cpd) plugin
+        classpath 'de.aaschmid:gradle-cpd-plugin:1.0'
     }
 }
 

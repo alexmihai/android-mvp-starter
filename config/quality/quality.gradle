@@ -13,6 +13,7 @@
 apply plugin: 'checkstyle'
 apply plugin: 'findbugs'
 apply plugin: 'pmd'
+apply plugin: 'cpd'
 
 findbugs {
   toolVersion = '3.0.0'
@@ -23,9 +24,10 @@ dependencies {
 }
 
 def qualityConfigDir = "$project.rootDir/config/quality"
-def reportsDir = "$project.buildDir/reports"
+def reportsDir       = "$project.buildDir/reports"
+def sourcesDir       = "$project.projectDir/src"
 
-check.dependsOn 'checkstyle', 'findbugs', 'pmd'
+check.dependsOn 'checkstyle', 'findbugs', 'pmd', 'lint', 'cpdCheck'
 
 task checkstyle(type: Checkstyle, group: 'Verification', description: 'Runs code style checks') {
     configFile file("$qualityConfigDir/checkstyle/checkstyle-config.xml")
@@ -92,3 +94,22 @@ task pmd(type: Pmd, group: 'Verification', description: 'Inspect sourcecode for 
         }
     }
 }
+
+cpdCheck {
+    source = "$sourcesDir"
+    include '**/*.java'
+    minimumTokenCount 75
+}
+
+task cpdReport {
+    doLast {
+        if (file("$reportsDir/cpd/cpdCheck.xml").exists()) {
+            ant.xslt(in: "$reportsDir/cpd/cpdCheck.xml",
+                    style: "$qualityConfigDir/cpd/cpd.xsl",
+                    out: "$reportsDir/cpd/cpdCheck.html"
+            )
+        }
+    }
+}
+
+cpdCheck.finalizedBy(cpdReport)
