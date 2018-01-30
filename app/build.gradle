@@ -151,7 +151,7 @@ static def getVersionCode() {
     if (buildNumber != null && buildNumber.isNumber()) {
         return buildNumber.toInteger()
     }
-    return 4
+    return 1
 }
 
 // Google Play publisher configuration
